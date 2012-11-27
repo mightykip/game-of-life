@@ -1,14 +1,7 @@
-define(['canvas'], function(canvas) {
+define(['canvas', 'board'], function(canvas, board) {
 
     var state = 0;
-
-    var board = [];
-    for (var row=0; row<100; row++) {
-        board[row] = [];
-        for (var col=0; col< 100; col++) {
-            board[row][col] = Math.floor(Math.random()*2);
-        }
-    }
+    var board = board.createNewBoardWithRandomData(100, 100);
 
     var isAliveOrDead = function(board, row, col) {
         var result = 0;

@@ -49,7 +49,7 @@ define(function () {
         resizeCanvas(board);
     };
 
-    function drawBlock(x, y) {
+    function drawBlock(y, x) {
         var canvas = document.getElementById('canvas'),
             context = canvas.getContext('2d');
         context.fillStyle = '#000';
@@ -62,7 +62,7 @@ define(function () {
             context = canvas.getContext('2d');
         context.clearRect(0, 0, canvas.width, canvas.height);
         for (var row = 1; row < board.length - 1; row++) {
-            for (var col = 1; col < board[row].length - 1; col++) {
+            for (var col = 1; col < board[0].length - 1; col++) {
                 if (board[row][col] === 1)
                     drawBlock(row, col);
             }

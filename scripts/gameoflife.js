@@ -1,7 +1,7 @@
 define(['canvas', 'board'], function(canvas, board) {
 
     var state = 0;
-    var gameBoard = board.createNewBoardWithRandomData(100, 100);
+    var gameBoard = board.createNewBoardWithRandomData(100, 200);
 
     canvas.setUpBoard(gameBoard);
 

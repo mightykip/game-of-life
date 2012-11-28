@@ -5,9 +5,13 @@ define(function () {
 
     window.addEventListener('resize', resizeCanvas, false);
 
-    var drawGrid = function () {
+    var drawGrid = function (board) {
         var canvas = document.getElementById('grid'),
             context = canvas.getContext('2d');
+
+        calculateSteps(board);
+
+        console.log(xStep, yStep);
 
         context.strokeStyle = "#ddd";
 
@@ -26,17 +30,24 @@ define(function () {
         context.stroke();
     };
 
-    var resizeCanvas = function () {
+    var calculateSteps = function(board) {
+        var canvas = document.getElementById('canvas');
+        xStep = canvas.width / board[0].length;
+        yStep = canvas.height / board.length;
+    };
+
+    var resizeCanvas = function (board) {
         var canvas = document.getElementById('canvas'),
             grid = document.getElementById('grid'),
             context = canvas.getContext('2d');
         grid.width = canvas.width = window.innerWidth;
         grid.height = canvas.height = window.innerHeight;
-        xStep = canvas.width / 100;
-        yStep = canvas.height / 100;
-        drawGrid();
+        drawGrid(board);
     };
-    resizeCanvas();
+
+    var setUpBoard = function(board) {
+        resizeCanvas(board);
+    };
 
     function drawBlock(x, y) {
         var canvas = document.getElementById('canvas'),
@@ -59,6 +70,7 @@ define(function () {
     };
 
     return {
-        drawField:drawField
+        drawField: drawField,
+        setUpBoard: setUpBoard
     };
 });

@@ -1,7 +1,9 @@
 define(['canvas', 'board'], function(canvas, board) {
 
     var state = 0;
-    var board = board.createNewBoardWithRandomData(100, 100);
+    var gameBoard = board.createNewBoardWithRandomData(100, 100);
+
+    canvas.setUpBoard(gameBoard);
 
     var isAliveOrDead = function(board, row, col) {
         var result = 0;
@@ -40,7 +42,7 @@ define(['canvas', 'board'], function(canvas, board) {
     return {
         start: function() {
             state = 1;
-            gameOfLife(board, canvas.drawField)
+            gameOfLife(gameBoard, canvas.drawField);
         },
         stop: function() {
             state = 0;
